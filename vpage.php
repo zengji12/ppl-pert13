@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>XSS 1</title>
+   <title>Example Page</title>
         <?php include('header.php'); ?>
 </head>
 <body class="loggedin">
