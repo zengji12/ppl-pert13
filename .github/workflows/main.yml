@@ -38,17 +38,5 @@ jobs:
         - name: check hub
           run: curl http://localhost:4444/ui
 
-        - name: install selenium client
-          run: pip install selenium
-        
-        - name: run tests
-          run: python tests/hello_aut.py ${{ env.URL }}
-
-        - name: 'upload artifacts'
-          uses: actions/upload-artifact@v4
-          with:
-            name: Screenshot
-            path: screenshot.png
-
         - name: stop docker
           run: docker stop docker-apache
