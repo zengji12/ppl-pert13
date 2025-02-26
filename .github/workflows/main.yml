@@ -38,5 +38,11 @@ jobs:
         - name: check hub
           run: curl http://localhost:4444/ui
 
+        - name: install selenium client
+          run: pip install -U selenium
+        
+        - name: run tests
+          run: python tests/hello_example.py
+
         - name: stop docker
           run: docker stop docker-apache
