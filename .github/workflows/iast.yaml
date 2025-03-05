@@ -16,7 +16,7 @@ jobs:
         run: docker network create --driver bridge isolated
       
       - name: deploy AUT 
-        run: docker --network=isolated -p 80:80 --name docker-apache -t -d my-php-site:latest
+        run: docker run --network=isolated -p 80:80 --name docker-apache -t -d my-php-site:latest
       
       - name: GET AUT URL
         run: |
