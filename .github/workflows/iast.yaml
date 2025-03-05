@@ -37,3 +37,19 @@ jobs:
       
       - name: stop docker
         run: docker stop docker-apache
+  
+  sast:
+    name: Psalm
+    permission: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Pslam Security Scan
+        uses: docker://ghcr.io/psalm/psalm-security-scan
+      
+      - name: Import Security Analysis result into GitHub Security Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: results.sarif
