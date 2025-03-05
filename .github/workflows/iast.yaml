@@ -40,7 +40,7 @@ jobs:
   
   sast:
     name: Psalm
-    permission: write-all
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
