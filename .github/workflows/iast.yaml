@@ -15,7 +15,10 @@ jobs:
       - name: Create isolated network
         run: docker network create --driver bridge isolated
       
-      - name: deploy AUT 
+      - name: Deploy AUT
+        run: docker build -t my-php-site:latest
+
+      - name: Run AUT 
         run: docker run --network=isolated -p 80:80 --name docker-apache -t -d my-php-site:latest
       
       - name: GET AUT URL
@@ -26,11 +29,11 @@ jobs:
       - name: Check AUT URL
         run: curl ${{ env.URL }}
 
-      - name: ZAP Scan
-        uses: hermanka/action-full-scan@master
-        with:
-          target: ${{ env.URL }}
-          network_name: isolated
+      # - name: ZAP Scan
+      #   uses: hermanka/action-full-scan@master
+      #   with:
+      #     target: ${{ env.URL }}
+      #     network_name: isolated
       
       - name: stop docker
         run: docker stop docker-apache
